@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="options.css" />
+    <link href="http://fonts.googleapis.com/css?family=Bubblegum+Sans" rel="stylesheet" type="text/css">
+    <title>Push Pop Options</title>
+  </head>
+  <body>
+    <div id="wrapper" class="vignette">
+      <div class="vignetteContent">
+        <div id="optionsHeader">
+          <h1 id="logo">
+            <span class="one">p</span><span class="two">U</span><span class="three">s</span><span class="four">h</span>
+            <span class="five">p</span><span class="six">O</span><span class="seven">p</span><span class="bang">!</span>
+          </h1>
+        </div>
+        <h2>Bookmarklet</h2>
+        <div class="section">
+          <p>
+            Add the bookmarklet below to your mobile device's web browser. When
+            you visit a page that you want to pop open in a new Chrome tab,
+            just push the bookmarklet!
+          </p>
+          <p>
+            <div id="bookmarklet-container">
+              <a id="bookmarklet" href="">Push Pop</a>
+            </div>
+          </p>
+        </div>
+        <h2>Options</h2>
+        <div class="section">
+          <form action="#">
+            <table class="options">
+              <tr>
+                <td>
+                  <label for="token">Identification Token:</label>
+                </td>
+                <td>
+                  <input id="token" type="text"></input>
+                  <div>
+                    <p>
+                    The identification token is used by the browser extension
+                    and the bookmarklet to keep their pushing and their popping
+                    on the same page.
+                    </p>
+                    <p>
+                      Be sure to update your bookmarklet if you change the token.
+                    </p>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label for="server">Server:</label>
+                </td>
+                <td>
+                  <input id="server" type="text"></input>
+                  <div>
+                    <p>
+                      The server is used as a middle man between the browser extension
+                      and the bookmarklet. Unless you've set up your own server, you
+                      can probably just leave this setting alone.
+                    </p>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td></td>
+                <td><button id="save">Save Options</button></td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">&copy; Jerod Santo &bull; Source Code</div>
+    <script src="options.js"></script>
+  </body>
+</html>
