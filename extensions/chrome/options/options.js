@@ -47,7 +47,7 @@
     var b = 'javascript:function pp() {'+
       'var token="'+ localStorage["token"] + '",server="' + localStorage["server"] +
       '",d=document,req=new XMLHttpRequest(),data=new FormData(),container=d.createElement("div"),' +
-      'overlay="<div id=\'pp-overlay\' style=\'position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: black; opacity: 0.875; z-index: 9999;\'><h1 id=\'pp-message\' style=\'font-family: Helvetica, sans-serif; color: white; text-align: center; margin-top: 40px;\'>Pushing...</h1></div>"; ' +
+      'overlay="<div id=\'pp-overlay\' style=\'position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: black; opacity: 0.875; z-index: 999999;\'><h1 id=\'pp-message\' style=\'font-size: 40px; font-family: Helvetica, sans-serif; color: white; text-align: center; margin-top: 40px;\'>Pushing...</h1></div>"; ' +
       'container.innerHTML = overlay;' +
       'd.body.appendChild(container);' +
       'data.append("url", encodeURIComponent(d.location.href));' +
@@ -63,7 +63,7 @@
           'setTimeout(function() {' +
             'var overlay = d.getElementById("pp-overlay");' +
             'overlay.parentNode.removeChild(overlay);' +
-          '}, 500);' +
+          '}, 1000);' +
         '}' +
       '};' +
       'req.send(data);' +
