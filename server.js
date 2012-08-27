@@ -42,7 +42,7 @@ io.configure(function () {
 
 io.configure("production", function() {
   io.set("log level", 2);
-}
+});
 
 io.sockets.on("connection", function(socket) {
   socket.on("ohai", function(token) {
