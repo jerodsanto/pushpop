@@ -37,7 +37,12 @@ app.post("/push/:token", function(req, res) {
 io.configure(function () {
   io.set("transports", ["xhr-polling"]);
   io.set("polling duration", 10);
+  io.set("close timeout", 15);
 });
+
+io.configure("production", function() {
+  io.set("log level", 2);
+}
 
 io.sockets.on("connection", function(socket) {
   socket.on("ohai", function(token) {
@@ -49,7 +54,6 @@ io.sockets.on("connection", function(socket) {
     socket.get("token", function(err, token) {
       pop(token);
     });
-
   });
 });
 
@@ -59,7 +63,7 @@ function push(token, url) {
 
   if (io.sockets.clients(token).length) {
     io.sockets.in(token).emit("push", url);
-    console.log("have clients!", token);
+    console.log("have clients!", token, io.sockets.clients(token));
   } else {
     redis.rpush(namespaced(token), url);
     console.log("no clients, added it to redis");
