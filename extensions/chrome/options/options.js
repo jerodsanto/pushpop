@@ -44,32 +44,14 @@
 
   function setBookmarklet() {
     var a = document.getElementById("bookmarklet");
-    var b = 'javascript:function pp() {'+
-      'var token="'+ localStorage["token"] + '",server="' + localStorage["server"] +
-      '",d=document,req=new XMLHttpRequest(),data=new FormData(),container=d.createElement("div"),' +
-      'overlay="<div id=\'pp-overlay\' style=\'position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: black; opacity: 0.875; z-index: 999999;\'><h1 id=\'pp-message\' style=\'font-size: 40px; font-family: Helvetica, sans-serif; color: white; text-align: center; margin-top: 40px;\'>Pushing...</h1></div>"; ' +
-      'container.innerHTML = overlay;' +
-      'd.body.appendChild(container);' +
-      'data.append("url", encodeURIComponent(d.location.href));' +
-      'req.open("POST", server + "/push/" + token, true);' +
-      'req.onreadystatechange = function(event) {' +
-        'if (req.readyState === 4) {' +
-          'var msg = d.getElementById("pp-message");' +
-          'if (req.status === 201) {' +
-            'msg.innerHTML = "Pushed!";' +
-          '} else {'+
-            'msg.innerHTML = "Try again later!";' +
-          '}' +
-          'setTimeout(function() {' +
-            'var overlay = d.getElementById("pp-overlay");' +
-            'overlay.parentNode.removeChild(overlay);' +
-          '}, 1000);' +
-        '}' +
-      '};' +
-      'req.send(data);' +
-      '};' +
-      ' pp(); void(0);';
-      a.setAttribute("href", b);
+    var b = 'javascript:(function(){' +
+      'window.PushPop={token:"' +localStorage["token"] +
+      '",server: "'+localStorage["server"]+'"};' +
+      'var d=document,s=d.createElement("scr"\+"ipt");' +
+      's.setAttribute("src", PushPop.server\+"/bookmarklet.js");' +
+      'd.body.appendChild(s);' +
+      '})();';
+    a.setAttribute("href", b);
   }
 
   function reload() {

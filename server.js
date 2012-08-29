@@ -13,6 +13,7 @@ if (process.env.REDISTOGO_URL) {
 }
 
 app.use(express.bodyParser());
+app.use(express.static(__dirname + "/public"));
 app.listen(port);
 
 app.get("/", function(req, res) {
