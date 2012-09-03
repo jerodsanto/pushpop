@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "description": "Push web pages from your mobile device's browser and they'll pop open in a new Chrome tab!",
   "options_page": "options/index.html",
-  "permissions": ["tabs", "management", "http://*/*"],
+  "permissions": ["tabs", "management", "*://*/*"],
   "background": {
     "scripts": ["socket.io.js", "pop.js"]
   }

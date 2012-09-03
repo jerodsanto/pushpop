@@ -15,7 +15,7 @@
     }
 
     if (!server) {
-      server = "http://pushpop.herokuapp.com";
+      server = "pushpop.herokuapp.com";
       localStorage["server"] = server;
     }
 
@@ -29,7 +29,7 @@
 
   function saveOptions() {
     localStorage["token"] = tokenInput.value;
-    localStorage["server"] = serverInput.value;
+    localStorage["server"] = serverInput.value.replace(/^https?:\/\//, "");
     setBookmarklet();
     reload();
   }
@@ -45,9 +45,9 @@
   function setBookmarklet() {
     var a = document.getElementById("bookmarklet");
     var b = 'javascript:(function(){' +
+      'var d=document,p=d.location.protocol,s=d.createElement("scr"\+"ipt");' +
       'window.PushPop={token:"' +localStorage["token"] +
-      '",server: "'+localStorage["server"]+'"};' +
-      'var d=document,s=d.createElement("scr"\+"ipt");' +
+      '",server: p\+"//' + localStorage["server"]+'"};' +
       's.setAttribute("src", PushPop.server\+"/bookmarklet.js");' +
       'd.body.appendChild(s);' +
       '})();';
