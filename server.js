@@ -2,7 +2,7 @@ var _ = require("underscore");
 var express = require("express");
 var app = express.createServer();
 var io = require("socket.io").listen(app);
-var port = process.env.PORT || 4000;
+var port = process.env.PORT || 5555;
 
 if (process.env.REDISTOGO_URL) {
   var rtg = require("url").parse(process.env.REDISTOGO_URL);
