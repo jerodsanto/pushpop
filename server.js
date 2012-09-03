@@ -59,15 +59,12 @@ io.sockets.on("connection", function(socket) {
 });
 
 function push(token, url) {
-  console.log("push with ", token, url);
   redis.incr(namespaced("total"));
 
   if (io.sockets.clients(token).length) {
     io.sockets.in(token).emit("push", url);
-    console.log("have clients!", token, io.sockets.clients(token));
   } else {
     redis.rpush(namespaced(token), url);
-    console.log("no clients, added it to redis");
   }
 }
 
