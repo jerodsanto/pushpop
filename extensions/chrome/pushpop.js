@@ -1,3 +1,16 @@
+// Check if the version has changed.
+var currVersion = getVersion();
+var prevVersion = localStorage["version"]
+if (currVersion != prevVersion) {
+  if (typeof prevVersion == "undefined") {
+    // install
+    chrome.tabs.create({url: "options/index.html"});
+  } else {
+   // update
+  }
+  localStorage["version"] = currVersion;
+}
+
 var token = localStorage["token"];
 var socket = io.connect("http://" + localStorage["server"]);
 
@@ -39,3 +52,9 @@ function stylePoppedPage(tabId) {
   chrome.tabs.insertCSS(tabId, {file: "ribbon.css"});
   chrome.tabs.executeScript(tabId, {file: "ribbon.js"});
 }
+
+function getVersion() {
+  var details = chrome.app.getDetails();
+  return details.version;
+}
+
