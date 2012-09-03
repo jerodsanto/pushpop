@@ -1,5 +1,5 @@
 var token = localStorage["token"];
-var socket = io.connect(localStorage["server"]);
+var socket = io.connect("http://" + localStorage["server"]);
 
 socket.on("connect", function() {
   socket.emit("ohai", token);
