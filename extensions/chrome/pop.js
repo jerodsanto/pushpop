@@ -10,6 +10,10 @@ socket.on("reconnect", function() {
   socket.emit("pop", token);
 });
 
+socket.on("error", reload);
+socket.on("connect_failed", reload);
+socket.on("reconnect_failed", reload);
+
 socket.on("push", function(url) {
   var toOpen = decodeURIComponent(url);
   chrome.windows.getAll(function(windows) {
@@ -26,6 +30,10 @@ socket.on("push", function(url) {
     }
   });
 });
+
+function reload() {
+  setTimeout(function() { location.reload(); }, 15000); // 15 sec
+}
 
 function stylePoppedPage(tabId) {
   chrome.tabs.insertCSS(tabId, {file: "ribbon.css"});
