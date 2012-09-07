@@ -1,13 +1,15 @@
 (function() {
-  var tokenInput, serverInput, saveButton;
+  var tokenInput, serverInput, windowSelect, saveButton;
 
   function init() {
     tokenInput = document.getElementById("token");
     serverInput = document.getElementById("server");
+    windowSelect = document.getElementById("window-type");
     saveButton = document.getElementById("save");
 
     var token = localStorage["token"];
     var server = localStorage["server"];
+    var windowType = localStorage["windowType"];
 
     if (!token) {
       token = b();
@@ -19,10 +21,16 @@
       localStorage["server"] = server;
     }
 
+    if (!windowType) {
+      windowType = "active";
+      localStorage["windowType"] = windowType;
+    }
+
     setBookmarklet();
 
     tokenInput.value = token;
     serverInput.value = server;
+    windowSelect.value = windowType;
 
     saveButton.onclick = saveOptions;
   }
@@ -30,6 +38,7 @@
   function saveOptions() {
     localStorage["token"] = tokenInput.value;
     localStorage["server"] = serverInput.value.replace(/^https?:\/\//, "");
+    localStorage["windowType"] = windowSelect.value;
     setBookmarklet();
     reload();
   }

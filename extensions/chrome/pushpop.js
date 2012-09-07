@@ -28,16 +28,22 @@ socket.on("connect_failed", reload);
 socket.on("reconnect_failed", reload);
 
 socket.on("push", function(url) {
-  var toOpen = decodeURIComponent(url);
+  var openOptions = {};
+  openOptions.url = decodeURIComponent(url);
+
   chrome.windows.getAll(function(windows) {
     if (windows.length) {
       // pop a new tab
-      chrome.tabs.create({url: toOpen}, function(created) {
+      if (localStorage["windowType"] == "first") {
+        openOptions.windowId = windows[0].id;
+      }
+
+      chrome.tabs.create(openOptions, function(created) {
         stylePoppedPage(created.id);
       });
     } else {
       // pop a new window
-      chrome.windows.create({url: toOpen}, function(created) {
+      chrome.windows.create(openOptions, function(created) {
         stylePoppedPage(created.tabs[0].id);
       });
     }
