@@ -4,8 +4,8 @@
   "manifest_version": 2,
   "description": "Push web pages from your mobile device's browser and they'll pop open in a new tab!",
   "icons": {
-    "48": "pushpop-48x48.png",
-    "128": "pushpop-128x128.png"
+    "48": "pushpop-48.png",
+    "128": "pushpop-128.png"
   },
   "options_page": "options/index.html",
   "permissions": ["tabs", "management", "*://*/*"],
