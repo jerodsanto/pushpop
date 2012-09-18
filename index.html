@@ -1,51 +1,86 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Push Pop &raquo; Mobile Push. Desktop Pop.</title>
+    <link rel="stylesheet" href="/pushpop.css" />
+    <link href="http://fonts.googleapis.com/css?family=Bubblegum+Sans" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      // var token = "8675309";
-      // var socket = io.connect("http://localhost");
-      // socket.emit("ohai", token);
-      // socket.on("push", function(url) {
-      //   console.log(decodeURIComponent(url));
-      // });
+    <div id="wrapper" class="vignette">
+      <div class="vignetteContent">
+        <div id="optionsHeader">
+          <h1 id="logo">
+            <span class="one">p</span><span class="two">U</span><span class="three">s</span><span class="four">h</span>
+            <span class="five">p</span><span class="six">O</span><span class="seven">p</span><span class="bang">!</span>
+          </h1>
+        </div>
+        <h2>What it is</h2>
+        <section>
+          <p>
+            Push Pop is a system for pushing web pages from your mobile device
+            and having them pop open in your desktop browser. See it in action!
+          </p>
+          <p>
+            <div id="demo">
+            </div>
+          </p>
+        </section>
 
-      function push(url) {
-        var d = document;
-        var token = "8675309";
-        var server = "http://localhost:4000";
-        var req = new XMLHttpRequest();
-        var data = new FormData();
-        var overlay = '<div id="pp-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: black; opacity: 0.875;"><h1 id="pp-message" style="font-family: Helvetica, sans-serif; color: white; text-align: center; margin-top: 40px;">Pushing...</h1></div>';
-        var container = d.createElement("div");
-        container.innerHTML = overlay;
-        d.body.appendChild(container);
-        data.append("url", encodeURIComponent(url));
-        req.open("POST", server + "/push/" + token, true);
-        req.onreadystatechange = function(event) {
-          if (req.readyState === 4) {
-            var msg = d.getElementById("pp-message");
+        <h2>How it Works</h2>
+        <section>
+          <p>
+            Your desktop browser of choice (just Google Chrome for now) runs
+            the Push Pop extension, which listens for pages pushed from its
+            partner bookmarklet.
+          </p>
 
-            if (req.status === 201) {
-              msg.innerHTML = "Pushed!";
-            } else {
-              msg.innerHTML = "Failed :(";
-            }
+          <p>
+            You use the bookmarklet from your mobile device and voilà, when you
+            return to your desk the pages you've pushed are right there waiting
+            for you.
+          </p>
+        </section>
 
-            setTimeout(function() {
-              var overlay = d.getElementById("pp-overlay");
-              overlay.parentNode.removeChild(overlay);
-            }, 500);
-          }
-        }
-        req.send(data);
-      }
-    </script>
+        <h2>Yeah, But</h2>
+        <section>
+          <h3>What kind of web pages would I use this for?</h3>
+          <p class="answer">
+            A Flash (gasp!) game, perhaps. Or a video that's longer than 60
+            seconds. Maybe a long form that you need to fill out. Pretty much
+            anything that sucks to do on a phone.
+          </p>
+
+          <h3>Isn't this like Chrome/Safari's tab syncing?</h3>
+          <p class="answer">
+            Yes and no. Yes in that it links pages from your mobile device to
+            your desktop browser. No in that Push Pop is an interrupt-based
+            system, whereas tab syncing is a poll-based system. Also, Push Pop
+            is mobile browser agnostic.
+          </p>
+
+          <h3>Why doesn't it work with Firefox, Safari, or Opera?</h3>
+          <p class="answer">
+            Mostly because I'm a Chrome user. However, I'll gladly add other
+            browsers if somebody wants to contribute extensions for them. The
+            extensions should all be very similar and can use my Chrome version
+            as a reference.
+          </p>
+
+          <h3>Why is there a server side component?</h3>
+          <p class="answer">
+            Because it's the best way I could figure out to make it work. The
+            good news is that the codebase is completely open source so you know
+            the server isn't doing anything shady with the pages you're push
+            popping.
+          </p>
+        </section>
+      </div>
+    </div>
+    <div class="copyright">&copy; Jerod Santo &bull; Source Code</div>
   </body>
 </html>

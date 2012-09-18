@@ -1,7 +1,7 @@
 body {
   background: #f2f5f6;
   color: #696969;
-  font-size: 12px;
+  font-size: 14px;
   font-family: Helvetica, Arial, sans-serif;
   line-height: 1.5;
   width: auto !important;
@@ -24,12 +24,19 @@ body {
 #logo span.bang  { color: #DF151A; }
 
 h2 {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   display: block;
   text-align: right;
   margin: 4px 0px;
   color: #333;
+}
+
+h3 {
+  font-size: 15px;
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 label {
@@ -56,9 +63,13 @@ form {
   width: 525px;
 }
 
-div.section {
+section {
   border-bottom: 1px solid #edf6f7;
   margin-bottom: 16px;
+}
+
+p.answer {
+  margin-top: 5px;
 }
 
 table.options {
@@ -168,4 +179,10 @@ input[type=checkbox] {
 #bookmarklet:active {
   border-top-color: #ff000d;
   background: #ff000d;
+}
+
+@media only screen and (max-width: 540px) {
+  #wrapper {
+    width: auto;
+  }
 }
