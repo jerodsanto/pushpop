@@ -7,7 +7,7 @@
   var d = document;
   var req = new XMLHttpRequest();
   var data = new FormData();
-  var overlay = '<div id="pp-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: black; opacity: 0.875; z-index: 999999;"><h1 id="pp-message" style="font-size: 40px; font-family: Helvetica, sans-serif; color: white; text-align: center; margin-top: 40px;">Pushing...</h1></div>';
+  var overlay = '<div id="pp-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: black; opacity: 0.875; z-index: 2147483647; padding: 147px 0 0; -webkit-text-size-adjust: none;"><h1 id="pp-message" style="font-size: 40px; font-family: Helvetica, sans-serif; color: #ccc; text-align: center;">Pushing...</h1></div>';
   var container = d.createElement("div");
   container.setAttribute("style", "position: inherit;");
   container.innerHTML = overlay;
