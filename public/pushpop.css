@@ -24,7 +24,8 @@ body {
 #logo span.bang  { color: #DF151A; }
 
 h2 {
-  font-size: 18px;
+  font-family: "Bubblegum Sans", cursive;
+  font-size: 20px;
   font-weight: bold;
   display: block;
   text-align: right;
